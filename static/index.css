@@ -1,0 +1,34 @@
+body{
+  counter-reset: Serial;           /* Set the Serial counter to 0 */
+}
+
+tbody tr th:first-child:before{
+  counter-increment: Serial;      /* Increment the Serial counter */
+  content:counter(Serial);        /* Display the counter */
+}
+
+.button {
+  font-size: 1em;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 0.5em 0.75em;
+  height: 2.75em;
+  width: 5em;
+  text-decoration: none;
+  display: inline-block;
+  margin: 2px 0.5em;
+  cursor: pointer;
+}
+
+#blue_1{
+  background-color:#007bff;
+}
+
+#red_1{
+  background-color: #dc3545;
+}
+
+#green_1{
+  background-color: #28a745;
+}

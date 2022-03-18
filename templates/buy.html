@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+
+{% block title %}Buy{% endblock %}
+{% block head %}<script defer src="{{ url_for('static', filename='buy.js')}}"></script>{% endblock %}
+
+{% block main %}
+
+    <style>
+        .var{
+            color: red;
+            font-weight: 800;
+        }
+        .modal-body > h6{
+            display: inline
+        }
+    </style>
+
+
+    <h1 class="headings">Buy Stocks</h1>
+    <form id="form" action="/buy" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" id="symbol" name="symbol" placeholder="Stock Symbol" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" autocomplete="off" id="shares" name="shares" placeholder="# Of Share" type="text">
+        </div>
+        <button class="btn btn-primary" id="id_button" type="button" data-toggle="modal" data-target="#Confirmation_model">Buy</button>
+<!-- Modal -->
+        <div class="modal fade" id="Confirmation_model" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Stock Purchase</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <h6>Please confirm that you want to buy </h6><h6 class ="var" id="shares_h6"></h6><h6> shares of </h6><h6 class ="var" id="symbol_h6"><h6> stock.</h6>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary">Confirm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transactions
+{% endblock %}
+{% block head %}
+<link href="/static/index.css" rel="stylesheet">
+<script defer src="{{ url_for('static', filename='index.js')}}"></script>
+{% endblock %}
+
+{% block main %}
+    <h1 class="headings" >{{ username[0]['username'] }}'s Transaction History</h1>
+    <table id="table_id" class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Symbol</th>
+              <th scope="col">Shares</th>
+              <th scope="col">Price</th>
+              <th scope="col">Total</th>
+              <th scope="col">Transaction Time</th>
+
+            </tr>
+          </thead>
+          <tbody class="border">
+                {% if not all_trans %}
+                <tr class=" table-primary">
+                    <td colspan="6">Transactions will appear here</td>
+                {% else %}
+                    {% for trans in all_trans %}
+                    <tr class=" table-primary">
+                        <th scope="row"></th>
+                        <td>{{ trans.stk_symbol }}</td>
+                        <td>{{ trans.share_quantity }}</td>
+                        <td>{{ trans.stk_price | usd }}</td>
+                        <td>{{ trans.amount | usd }}</td>
+                        <td>{{ trans.date }}</td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+        </tbody>
+    </table>
+    <input id="red_1" type="button" class="button" value="Red">
+    <input id="green_1" type="button" class="button" value="Green">
+    <input id="blue_1" type="button" class="button" value="Blue">
+
+{% endblock %}

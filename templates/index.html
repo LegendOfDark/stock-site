@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Stock Profile
+{% endblock %}
+{% block head %}
+<link href="/static/index.css" rel="stylesheet">
+<script defer src="{{ url_for('static', filename='index.js')}}"></script>
+{% endblock %}
+
+{% block main %}
+    <h1 class="headings" >{{ username[0]['username'] }}'s Stock Profile</h1>
+    <table id="table_id" class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Stock Name</th>
+              <th scope="col">Symbol</th>
+              <th scope="col">Current Price</th>
+              <th scope="col">Shares</th>
+              <th scope="col">Total</th>
+
+            </tr>
+          </thead>
+          <tbody class="border">
+              {% for user_profil in user_profils %}
+            <tr class=" table-primary">
+              <th scope="row"></th>
+              <td>{{ user_profil.name }}</td>
+              <td>{{ user_profil.stk_symbol }}</td>
+              <td>{{ user_profil.price }}</td>
+              <td>{{ user_profil.share_quantity }}</td>
+              <td>{{ user_profil.holding }}</td>
+            </tr>
+              {% endfor %}
+            <tr class="table-primary"><td></td><td><strong>Cash</strong></td><td colspan="3"></td><td>{{ cash | usd }}</td></tr>
+            <tr class="table-primary"><td colspan="5"></td><td><strong>{{ total | usd }}</strong></td></tr>
+        </tbody>
+    </table>
+    <input id="red_1" type="button" class="button" value="Red">
+    <input id="green_1" type="button" class="button" value="Green">
+    <input id="blue_1" type="button" class="button" value="Blue">
+
+{% endblock %}

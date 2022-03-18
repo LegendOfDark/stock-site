@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Stock Prices
+{% endblock %}
+
+{% block main %}
+    <h1 class="headings" >Stock Price</h1>
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Symbol</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-info">
+              <td>{{ prices['name'] }}</td>
+              <td>{{ prices['price'] | usd }}</td>
+              <td>{{ prices['symbol'] }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
